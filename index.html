@@ -435,6 +435,39 @@
         background: linear-gradient(to right, transparent, var(--ink-faint));
       }
 
+      /* ── Hero profile photo ──────────────────────────────── */
+      .hero-portrait {
+        position: absolute;
+        top: clamp(90px, 12vw, 130px);
+        right: var(--pad);
+        width: clamp(120px, 16vw, 200px);
+        height: clamp(120px, 16vw, 200px);
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1.5px solid rgba(201, 169, 110, 0.4);
+        box-shadow:
+          0 0 0 6px rgba(201, 169, 110, 0.07),
+          0 20px 60px rgba(0, 0, 0, 0.45);
+        opacity: 0;
+        animation: fadeUp 0.7s 0.35s forwards;
+        z-index: 2;
+        flex-shrink: 0;
+      }
+      .hero-portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+      @media (max-width: 800px) {
+        .hero-portrait {
+          width: clamp(80px, 20vw, 120px);
+          height: clamp(80px, 20vw, 120px);
+          top: 80px;
+        }
+      }
+
       /* ── Stats ───────────────────────────────────────────── */
       .stats-strip {
         display: grid;
@@ -774,6 +807,24 @@
           transparent 70%
         );
         pointer-events: none;
+      }
+      /* ── Profile photo ───────────────────────────── */
+      .about-photo-wrap {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid rgba(201, 169, 110, 0.45);
+        box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.1);
+        margin-bottom: 20px;
+        flex-shrink: 0;
+      }
+      .about-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
       }
       .about-mono {
         font-family: var(--serif);
@@ -1564,6 +1615,11 @@
 
     <!-- ══ HERO ══════════════════════════════════════════ -->
     <section id="hero">
+      <!-- Profile portrait — top-right corner -->
+      <div class="hero-portrait">
+        <img src="/pic2.jpeg" alt="Akash Arya" />
+      </div>
+
       <div class="hero-top">
         <div class="hero-avail">
           <div class="hero-avail-dot"></div>
@@ -1843,7 +1899,9 @@
     <section class="section" id="about">
       <div class="about-card fade">
         <div class="about-card-top">
-          <div class="about-mono">A<em>A</em></div>
+          <div class="about-photo-wrap">
+            <img src="/pic2.jpeg" alt="Akash Arya" />
+          </div>
           <div class="about-badge">Open to work</div>
         </div>
         <div class="about-card-body">
@@ -1976,47 +2034,73 @@
       </p>
 
       <div class="cert-grid">
-
         <!-- Python -->
-        <div class="cert-card fade" onclick="openLb('/mnt/user-data/uploads/python.jpg')" role="button" tabindex="0">
+        <div
+          class="cert-card fade"
+          onclick="openLb('/python.jpg')"
+          role="button"
+          tabindex="0"
+        >
           <div class="cert-thumb">
-            <img src="/mnt/user-data/uploads/python.jpg" alt="Python Programming for Beginners certificate" loading="lazy"/>
+            <img
+              src="/python.jpg"
+              alt="Python Programming for Beginners certificate"
+              loading="lazy"
+            />
           </div>
           <div class="cert-body">
             <div class="cert-platform">Udemy · Certificate</div>
-            <div class="cert-title">Python Programming for Beginners: Learn Python from Scratch</div>
+            <div class="cert-title">
+              Python Programming for Beginners: Learn Python from Scratch
+            </div>
             <div class="cert-meta">
               <span class="cert-date">Feb. 8, 2026</span>
               <span class="cert-len">6 total hours</span>
             </div>
-            <div class="cert-verify">
-              View certificate ↗
-            </div>
+            <div class="cert-verify">View certificate ↗</div>
           </div>
         </div>
 
         <!-- AWS -->
-        <div class="cert-card fade" onclick="openLb('/mnt/user-data/uploads/aws.jpg')" role="button" tabindex="0">
+        <div
+          class="cert-card fade"
+          onclick="openLb('/aws.jpg')"
+          role="button"
+          tabindex="0"
+        >
           <div class="cert-thumb">
-            <img src="/mnt/user-data/uploads/aws.jpg" alt="Mastering AI on AWS certificate" loading="lazy"/>
+            <img
+              src="/aws.jpg"
+              alt="Mastering AI on AWS certificate"
+              loading="lazy"
+            />
           </div>
           <div class="cert-body">
             <div class="cert-platform">Udemy · Certificate</div>
-            <div class="cert-title">Mastering AI on AWS: Training AWS Certified AI-Practitioner</div>
+            <div class="cert-title">
+              Mastering AI on AWS: Training AWS Certified AI-Practitioner
+            </div>
             <div class="cert-meta">
               <span class="cert-date">Feb. 13, 2026</span>
               <span class="cert-len">4 total hours</span>
             </div>
-            <div class="cert-verify">
-              View certificate ↗
-            </div>
+            <div class="cert-verify">View certificate ↗</div>
           </div>
         </div>
 
         <!-- Ethical Hacking -->
-        <div class="cert-card fade" onclick="openLb('/mnt/user-data/uploads/ethically.jpg')" role="button" tabindex="0">
+        <div
+          class="cert-card fade"
+          onclick="openLb('/ethically.jpg')"
+          role="button"
+          tabindex="0"
+        >
           <div class="cert-thumb">
-            <img src="/mnt/user-data/uploads/ethically.jpg" alt="Ethically Hack the Planet certificate" loading="lazy"/>
+            <img
+              src="/ethically.jpg"
+              alt="Ethically Hack the Planet certificate"
+              loading="lazy"
+            />
           </div>
           <div class="cert-body">
             <div class="cert-platform">Udemy · Certificate</div>
@@ -2025,19 +2109,16 @@
               <span class="cert-date">Feb. 8, 2026</span>
               <span class="cert-len">1 total hour</span>
             </div>
-            <div class="cert-verify">
-              View certificate ↗
-            </div>
+            <div class="cert-verify">View certificate ↗</div>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- Lightbox -->
     <div class="lb-overlay" id="lb" onclick="closeLb()">
       <button class="lb-close" onclick="closeLb()" aria-label="Close">✕</button>
-      <img class="lb-img" id="lb-img" src="" alt="Certificate"/>
+      <img class="lb-img" id="lb-img" src="" alt="Certificate" />
     </div>
 
     <!-- ══ HOBBIES ════════════════════════════════════════ -->
@@ -2163,7 +2244,7 @@
 
         <a
           class="cc cc-link"
-          href="https://github.com/akasharya"
+          href="https://github.com/Aakash-arya09"
           target="_blank"
           rel="noopener"
           title="GitHub"
