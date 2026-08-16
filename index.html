@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c0e13" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Akash Arya — Developer & Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1611,6 +1614,260 @@
       .lb-close:hover {
         color: var(--gold);
       }
+
+      /* ══════════════════════════════════════════════════════
+         PREMIUM MOBILE REFINEMENT
+         Tighter rhythm, visible depth (not hover-dependent),
+         centered hero, full-width CTAs, safe-area aware.
+      ══════════════════════════════════════════════════════ */
+      @media (max-width: 768px) {
+        html {
+          -webkit-tap-highlight-color: transparent;
+        }
+        body {
+          -webkit-text-size-adjust: 100%;
+        }
+
+        :root {
+          --pad: 22px;
+          --gap: 64px;
+        }
+
+        /* ── Nav: tighter, glassier, safe-area aware ── */
+        .nav {
+          padding: 16px 20px;
+          padding-top: max(16px, env(safe-area-inset-top));
+          background: rgba(12, 14, 19, 0.88);
+        }
+        .nav.scrolled {
+          padding-top: max(12px, env(safe-area-inset-top));
+          padding-bottom: 12px;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        }
+        .nav-logo {
+          font-size: 1.25rem;
+        }
+        .hamburger {
+          width: 26px;
+          height: 44px;
+          justify-content: center;
+        }
+        .mob-menu a {
+          font-size: clamp(2.1rem, 11vw, 3rem);
+        }
+
+        /* ── Hero: centered, stacked, premium card feel ── */
+        #hero {
+          justify-content: flex-start;
+          padding: 0 20px clamp(48px, 10vw, 72px);
+          padding-top: max(104px, env(safe-area-inset-top) + 96px);
+          text-align: center;
+          border-bottom: 1px solid var(--border);
+        }
+        .hero-portrait {
+          position: static;
+          order: -3;
+          width: 96px;
+          height: 96px;
+          margin: 0 auto 20px;
+        }
+        .hero-top {
+          position: static;
+          order: -2;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 22px;
+          width: 100%;
+        }
+        .hero-h1 {
+          order: -1;
+          max-width: 100%;
+          margin: 0 auto clamp(24px, 6vw, 32px);
+          font-size: clamp(3rem, 13vw, 4.2rem);
+          text-align: center;
+        }
+        .hero-bottom {
+          flex-direction: column;
+          align-items: center;
+          gap: 26px;
+          text-align: center;
+        }
+        .hero-desc {
+          max-width: 38ch;
+          margin: 0 auto;
+        }
+        .hero-cta {
+          width: 100%;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .btn-gold,
+        .btn-outline {
+          width: 100%;
+          justify-content: center;
+          padding: 16px 28px;
+          font-size: 0.78rem;
+        }
+        .btn-gold {
+          box-shadow: 0 10px 32px rgba(201, 169, 110, 0.22);
+        }
+        .btn-gold:active,
+        .btn-outline:active {
+          transform: scale(0.97);
+        }
+        .hero-scroll {
+          display: none;
+        }
+
+        /* ── Stats: elevated cards instead of flat strip ── */
+        .stats-strip {
+          grid-template-columns: 1fr 1fr;
+          gap: 1px;
+          background: var(--border);
+          border-bottom: none;
+          margin: 0 20px clamp(40px, 8vw, 56px);
+          border-radius: var(--r);
+          overflow: hidden;
+          border: 1px solid var(--border);
+        }
+        .stat-item {
+          background: var(--card);
+          border-right: none !important;
+          padding: 26px 18px;
+        }
+        .stat-n {
+          font-size: clamp(1.9rem, 8vw, 2.4rem);
+        }
+
+        /* ── Sections: tighter but still generous ── */
+        .section {
+          padding: clamp(56px, 12vw, 72px) 20px;
+        }
+        .section-h2 {
+          font-size: clamp(2.1rem, 9vw, 2.7rem);
+        }
+        .eyebrow {
+          margin-bottom: 16px;
+        }
+
+        /* ── Cards everywhere: always-on depth, tap feedback ── */
+        .wcard,
+        .svc-card,
+        .testi-card,
+        .cert-card,
+        .cc,
+        .about-card {
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+        }
+        .wcard:active,
+        .svc-card:active,
+        .testi-card:active,
+        .cert-card:active,
+        .cc:active {
+          transform: scale(0.985);
+          transition: transform 0.15s ease;
+        }
+        .wcard:hover {
+          transform: none;
+        }
+        .wcard-body {
+          padding: 20px 20px 24px;
+        }
+
+        /* ── Work / Services / Testimonials / Certs: single column, consistent gap ── */
+        .work-grid,
+        .svc-grid,
+        .testi-grid,
+        .cert-grid {
+          grid-template-columns: 1fr !important;
+          gap: 14px;
+        }
+        .work-head {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        /* ── About ── */
+        .about-card-top {
+          padding: 28px;
+        }
+        .about-card-body {
+          padding: 24px 28px 28px;
+        }
+        .about-mono {
+          font-size: 3.4rem;
+        }
+        .skill-grid {
+          margin-bottom: 30px;
+        }
+        .exp-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+          padding: 16px 0;
+        }
+
+        /* ── Contact: premium centered block ── */
+        #contact {
+          padding-top: clamp(64px, 14vw, 88px);
+          padding-bottom: clamp(64px, 14vw, 88px);
+        }
+        .contact-h {
+          font-size: clamp(2.6rem, 12vw, 3.4rem);
+        }
+        .contact-email-btn {
+          width: 100%;
+          justify-content: center;
+          padding: 18px 20px;
+          font-size: clamp(0.85rem, 4.2vw, 1.05rem);
+          text-align: center;
+          margin-bottom: 44px;
+          box-shadow: 0 10px 34px rgba(201, 169, 110, 0.14);
+        }
+        .contact-email-btn span {
+          overflow-wrap: anywhere;
+        }
+        .contact-cards {
+          gap: 10px;
+        }
+        .cc {
+          width: 100%;
+          max-width: 340px;
+          flex-direction: row;
+          justify-content: flex-start;
+          text-align: left;
+          padding: 16px 18px;
+        }
+        .cc-icon {
+          margin-bottom: 0;
+          flex-shrink: 0;
+        }
+
+        /* ── Footer: clean centered stack ── */
+        .footer {
+          flex-direction: column;
+          text-align: center;
+          padding: 28px 20px;
+          padding-bottom: max(28px, env(safe-area-inset-bottom));
+          gap: 14px;
+        }
+        .footer-r {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 16px 20px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .hero-h1 {
+          font-size: clamp(2.6rem, 14vw, 3.4rem);
+        }
+        .cc {
+          max-width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1642,7 +1899,7 @@
     <section id="hero">
       <!-- Profile portrait — top-right corner -->
       <div class="hero-portrait">
-        <img src="./pic2.jpeg" alt="Akash Arya" />
+        <img src="/pic2.jpeg" alt="Akash Arya" />
       </div>
 
       <div class="hero-top">
